@@ -1,0 +1,30 @@
+<div class="container-fluid">
+  <div class="row wrapper">
+    <div class="card col-lg-3 col-md-3">
+      <div class="card-header">
+        <img class="img-fluid offset-0 mb-2" src="../../assets/download.png">
+      </div>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <input type="text" formControlName="login" class="form-control-lg"
+            [ngClass]="{ 'is-invalid': submitted && f.login.errors }" id="login" name="login" placeholder="Email">
+          <div *ngIf="submitted && f.login.errors" class="invalid-feedback">
+            <div *ngIf="f.login.errors.required">Email inválido</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="password" formControlName="password" class="form-control-lg mb-3" id="senha" name="senha"
+            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="Senha">
+          <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Senha inválida</div>
+          </div>
+        </div>
+        <div class="form-group offset-0">
+          <button class="btn btn-lg btnColor">Entrar</button>
+        </div>
+      </form>
+      <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+      <a href="#" data-toggle="modal" data-target="#cadastro">Cadastrar</a>
+    </div>
+  </div>
+</div>
